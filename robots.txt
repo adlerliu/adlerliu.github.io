@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://adlerliu.github.io/sitemap.xml
