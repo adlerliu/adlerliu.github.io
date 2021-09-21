@@ -141,11 +141,33 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#configmap概述">ConfigMap概述</a></li>
+    <li><a href="#创建configmap">创建ConfigMap</a></li>
+    <li><a href="#通过yaml文件创建">通过yaml文件创建</a></li>
+    <li><a href="#创建该configmap">创建该ConfigMap</a></li>
+    <li><a href="#查看创建好的configmap">查看创建好的ConfigMap</a></li>
+    <li><a href="#将两个配置文件serverxml和loggingproperties定义configmap">将两个配置文件server.xml和logging.properties定义ConfigMap</a></li>
+    <li><a href="#创建该configmap-1">创建该ConfigMap</a></li>
+    <li><a href="#查看创建好的configmap-1">查看创建好的ConfigMap</a></li>
+    <li><a href="#pod中使用configmap">Pod中使用ConfigMap</a></li>
+    <li><a href="#使用上例的cm-appvarsyaml-configmap">使用上例的cm-appvars.yaml ConfigMap</a></li>
+    <li><a href="#方法一">方法一</a>
       <ul>
         <li></li>
       </ul>
     </li>
+    <li><a href="#查看日志看到环境变量正确设置-1">查看日志看到环境变量正确设置</a></li>
+    <li><a href="#通过volumemount使用configmap">通过VolumeMount使用ConfigMap</a></li>
+    <li><a href="#方法一-1">方法一</a></li>
+    <li><a href="#创建该pod使用上面创建的cm-appconfigfiles-configmap">创建该pod,使用上面创建的cm-appconfigfiles configmap</a></li>
+    <li><a href="#登录容器查看">登录容器查看</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#创建pod-1">创建Pod</a></li>
+    <li><a href="#登录容器查看数据">登录容器查看数据</a></li>
+    <li><a href="#使用configmap的限制条件">使用ConfigMap的限制条件</a></li>
   </ul>
 </nav>
     </div>
@@ -206,15 +228,15 @@
         </div>
         
         <div class="post-content">
-            <h6 id="configmap概述">ConfigMap概述</h6>
+            <h2 id="configmap概述">ConfigMap概述</h2>
 <pre><code>ConfigMap用法如下:
 1、生成容器内的环境变量
 2、设置容器命令的启动参数(需设置环境变量)
 3、以volume的形式挂载容器内部的文件或目录
 ConfigMap以一个或多个key:value形式保存在kubernets系统中供应使用
 可以通过yaml文件创建或者kubectl create configmap命令创建
-</code></pre><h6 id="创建configmap">创建ConfigMap</h6>
-<h6 id="通过yaml文件创建">通过yaml文件创建</h6>
+</code></pre><h2 id="创建configmap">创建ConfigMap</h2>
+<h2 id="通过yaml文件创建">通过yaml文件创建</h2>
 <pre><code>apiVersion: v1
 kind: ConfigMap 
 metadata:
@@ -222,9 +244,9 @@ metadata:
 data:
   apploglevel: info 
   appdatadir: /var/data
-</code></pre><h6 id="创建该configmap">创建该ConfigMap</h6>
+</code></pre><h2 id="创建该configmap">创建该ConfigMap</h2>
 <pre><code>kubectl create -f cm-appvars.yaml
-</code></pre><h6 id="查看创建好的configmap">查看创建好的ConfigMap</h6>
+</code></pre><h2 id="查看创建好的configmap">查看创建好的ConfigMap</h2>
 <pre><code>kubectl get configmap                                                          
 NAME         DATA   AGE
 cm-appvars   2      78s
@@ -258,7 +280,7 @@ metadata:
   resourceVersion: &quot;3552744&quot;
   selfLink: /api/v1/namespaces/default/configmaps/cm-appvars
   uid: 0d935aee-8e71-11e9-a424-025000000001
-</code></pre><h6 id="将两个配置文件serverxml和loggingproperties定义configmap">将两个配置文件server.xml和logging.properties定义ConfigMap</h6>
+</code></pre><h2 id="将两个配置文件serverxml和loggingproperties定义configmap">将两个配置文件server.xml和logging.properties定义ConfigMap</h2>
 <pre><code>apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -319,15 +341,15 @@ data:
     = 3manager.org.apache.juli.FileHandler\r\n\r\norg.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/host-manager].level
     = INFO\r\norg.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/host-manager].handlers
     = 4host-manager.org.apache.juli.FileHandler\r\n\r\n&quot;
-</code></pre><h6 id="创建该configmap-1">创建该ConfigMap</h6>
+</code></pre><h2 id="创建该configmap-1">创建该ConfigMap</h2>
 <pre><code>kubectl create -f cm-appconfigfiles.yaml
-</code></pre><h6 id="查看创建好的configmap-1">查看创建好的ConfigMap</h6>
+</code></pre><h2 id="查看创建好的configmap-1">查看创建好的ConfigMap</h2>
 <pre><code>kubectl get configmap cm-appconfigfiles                                        
 NAME                DATA   AGE
 cm-appconfigfiles   2      108s
-</code></pre><h6 id="pod中使用configmap">Pod中使用ConfigMap</h6>
-<h6 id="使用上例的cm-appvarsyaml-configmap">使用上例的cm-appvars.yaml ConfigMap</h6>
-<h6 id="方法一">方法一</h6>
+</code></pre><h2 id="pod中使用configmap">Pod中使用ConfigMap</h2>
+<h2 id="使用上例的cm-appvarsyaml-configmap">使用上例的cm-appvars.yaml ConfigMap</h2>
+<h2 id="方法一">方法一</h2>
 <pre><code>apiVersion: v1
 kind: Pod 
 metadata:
@@ -377,12 +399,12 @@ spec:
     - configMapKeyRef:
       name: cm-appvars        # 根据cm-appvars中的key=value自动生成环境变量
   restartPolicy: Never 
-</code></pre><h6 id="查看日志看到环境变量正确设置-1">查看日志看到环境变量正确设置</h6>
+</code></pre><h2 id="查看日志看到环境变量正确设置-1">查看日志看到环境变量正确设置</h2>
 <pre><code>kubectl logs cm-test-pod                                                       
 apploglevel=/var/data
 appdatadir=info
-</code></pre><h6 id="通过volumemount使用configmap">通过VolumeMount使用ConfigMap</h6>
-<h5 id="方法一-1">方法一</h5>
+</code></pre><h2 id="通过volumemount使用configmap">通过VolumeMount使用ConfigMap</h2>
+<h2 id="方法一-1">方法一</h2>
 <pre><code>apiVersion: v1 
 kind: Pod 
 metadata:
@@ -405,10 +427,10 @@ spec:
         path: server.xml            # value将server.xml文件名进行挂载
       - key: key-loggingproperties  # key=key-loggingproperties
         path: logging.properties    # value将logging.properties文件进行挂载
-</code></pre><h6 id="创建该pod使用上面创建的cm-appconfigfiles-configmap">创建该pod,使用上面创建的cm-appconfigfiles configmap</h6>
+</code></pre><h2 id="创建该pod使用上面创建的cm-appconfigfiles-configmap">创建该pod,使用上面创建的cm-appconfigfiles configmap</h2>
 <pre><code>kubectl create -f cm-test-app.yaml                                             
 pod/cm-test-app created
-</code></pre><h6 id="登录容器查看">登录容器查看</h6>
+</code></pre><h2 id="登录容器查看">登录容器查看</h2>
 <pre><code>kubectl exec -it cm-test-app bash                                              
 root@cm-test-app:/usr/local/tomcat# cat /configfiles/server.xml
 &lt;?xml version='1.0' encoding='utf-8'?&gt;
@@ -498,14 +520,14 @@ spec:
   - name: serverxml                 # 定义volume的名称
     configMap:
       name: cm-appconfigfiles       # 使用configmap&quot;cm-appconfigfiles&quot;
-</code></pre><h6 id="创建pod-1">创建Pod</h6>
+</code></pre><h2 id="创建pod-1">创建Pod</h2>
 <pre><code>kubectl create -f cm-app.yaml                                                  
 pod/cm-app created
-</code></pre><h6 id="登录容器查看数据">登录容器查看数据</h6>
+</code></pre><h2 id="登录容器查看数据">登录容器查看数据</h2>
 <pre><code>kubectl exec -it cm-app bash
 root@cm-app:/usr/local/tomcat# ls /configfiles/
 key-loggingproperties  key-serverxml
-</code></pre><h6 id="使用configmap的限制条件">使用ConfigMap的限制条件</h6>
+</code></pre><h2 id="使用configmap的限制条件">使用ConfigMap的限制条件</h2>
 <pre><code>1、ConfigMap必须在Pod之前创建
 2、ConfigMap受Namespace限制,只有处于相同Namespace中的Pod才可以引用它
 3、ConfigMap中配额管理还未实现
@@ -533,15 +555,15 @@ key-loggingproperties  key-serverxml
     <h2>See Also</h2>
     <ul class="listing">
         
+        <li><a href="/2020/12/08/kubernetes-StatefulSet-introduce.html">kubernetes-StatefulSet介绍</a></li>
+        
+        <li><a href="/2020/12/18/kubernetes-pv-pvc-basic-introduction.html">kubernetes-pv、pvc基础介绍</a></li>
+        
+        <li><a href="/2020/12/18/kubernetes-label-introduction.html">kubernetes标签介绍</a></li>
+        
         <li><a href="/2020/08/09/kubernetes-pod-one.html">Kubernetes之pod(一)</a></li>
         
         <li><a href="/2019/12/18/golang-gin-query-parameters-array-map.html">Golang Gin 实战（五）| 接收数组和 Map</a></li>
-        
-        <li><a href="/post/2019-12-15-golang-gin-query-parameters-source-code-analysis/">Golang Gin 实战（三）| 路由参数</a></li>
-        
-        <li><a href="/post/2019-12-13-golang-gin-parameters-in-path/">Golang Gin 实战（三）| 路由参数</a></li>
-        
-        <li><a href="/about/">关于我</a></li>
         
     </ul>
 </div>
@@ -646,6 +668,18 @@ key-loggingproperties  key-serverxml
     </li>
     
     <li>
+        <a href="http://adler.icu/2020/12/18/kubernetes-pv-pvc-basic-introduction.html" title="kubernetes-pv、pvc基础介绍">kubernetes-pv、pvc基础介绍</a>
+    </li>
+    
+    <li>
+        <a href="http://adler.icu/2020/12/08/kubernetes-StatefulSet-introduce.html" title="kubernetes-StatefulSet介绍">kubernetes-StatefulSet介绍</a>
+    </li>
+    
+    <li>
+        <a href="http://adler.icu/2020/12/18/kubernetes-label-introduction.html" title="kubernetes标签介绍">kubernetes标签介绍</a>
+    </li>
+    
+    <li>
         <a href="http://adler.icu/2020/08/09/kubernetes-pod-one.html" title="Kubernetes之pod(一)">Kubernetes之pod(一)</a>
     </li>
     
@@ -674,7 +708,7 @@ key-loggingproperties  key-serverxml
     
     <li><a href="http://adler.icu/categories/docker/">docker (1)</a></li>
     
-    <li><a href="http://adler.icu/categories/kubernetes/">kubernetes (3)</a></li>
+    <li><a href="http://adler.icu/categories/kubernetes/">kubernetes (6)</a></li>
     
 </ul>
     </section>

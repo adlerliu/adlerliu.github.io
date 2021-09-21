@@ -58,6 +58,21 @@
   </url>
   
   <url>
+    <loc>http://adler.icu/2020/12/18/kubernetes-pv-pvc-basic-introduction.html</loc>
+    <lastmod>2020-12-08T21:55:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://adler.icu/2020/12/08/kubernetes-StatefulSet-introduce.html</loc>
+    <lastmod>2020-12-08T21:55:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://adler.icu/2020/12/18/kubernetes-label-introduction.html</loc>
+    <lastmod>2020-12-08T21:55:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://adler.icu/2020/08/09/kubernetes-pod-one.html</loc>
     <lastmod>2020-08-09T21:55:00+08:00</lastmod>
   </url>

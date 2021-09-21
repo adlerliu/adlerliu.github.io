@@ -141,11 +141,23 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#docker下nginx反向代理和负载均衡配置">docker下nginx反向代理和负载均衡配置</a></li>
-      </ul>
-    </li>
+    <li><a href="#docker下nginx反向代理和负载均衡配置">docker下nginx反向代理和负载均衡配置</a></li>
+    <li><a href="#拉取镜像">拉取镜像</a></li>
+    <li><a href="#启动docker">启动docker</a></li>
+    <li><a href="#查看容器运行情况">查看容器运行情况</a></li>
+    <li><a href="#访问nginx">访问nginx</a></li>
+    <li><a href="#进入容器后台">进入容器后台</a></li>
+    <li><a href="#nginxconf是nginx主要配置文件可以通过more命令查看nginxconf">nginx.conf是nginx主要配置文件,可以通过more命令查看nginx.conf</a></li>
+    <li><a href="#include-etcnginxconfdconf">include /etc/nginx/conf.d/*.conf;</a></li>
+    <li><a href="#nginx配置文件挂载">nginx配置文件挂载</a></li>
+    <li><a href="#创建文件和目录">创建文件和目录</a></li>
+    <li><a href="#删除镜像重新挂载">删除镜像，重新挂载</a></li>
+    <li><a href="#更改配置加载web应用">更改配置加载web应用</a></li>
+    <li><a href="#创建tomcat应用">创建Tomcat应用</a></li>
+    <li><a href="#nginx实现反向代理和负载均衡">nginx实现反向代理和负载均衡</a></li>
+    <li><a href="#nginx配置如下">nginx配置如下</a></li>
+    <li><a href="#defaultconf">default.conf</a></li>
+    <li><a href="#nginxconf配置如下">nginx.conf配置如下</a></li>
   </ul>
 </nav>
     </div>
@@ -206,25 +218,25 @@
         </div>
         
         <div class="post-content">
-            <h3 id="docker下nginx反向代理和负载均衡配置">docker下nginx反向代理和负载均衡配置</h3>
-<h4 id="拉取镜像">拉取镜像</h4>
+            <h2 id="docker下nginx反向代理和负载均衡配置">docker下nginx反向代理和负载均衡配置</h2>
+<h2 id="拉取镜像">拉取镜像</h2>
 <pre><code>docker pull nginx
 docker pull tomcat
-</code></pre><h4 id="启动docker">启动docker</h4>
+</code></pre><h2 id="启动docker">启动docker</h2>
 <pre><code>docker run --name=my_nginx -p 8000:80 -d nginx
 --name: 为nginx容器指定一个名称方便管理
 -p: 将nginx内部80端口代理到宿主机8000端口,可以通过宿主机:8000访问nginx 80端口
 -d: 后台运行
-</code></pre><h4 id="查看容器运行情况">查看容器运行情况</h4>
+</code></pre><h2 id="查看容器运行情况">查看容器运行情况</h2>
 <pre><code>docker ps 
 CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                  NAMES
 3694b7d63cab        nginx                  &quot;nginx -g 'daemon of…&quot;   2 minutes ago       Up 2 minutes        0.0.0.0:8000-&gt;80/tcp   my_nginx
-</code></pre><h4 id="访问nginx">访问nginx</h4>
+</code></pre><h2 id="访问nginx">访问nginx</h2>
 <p><a href="http://node3.liudehan.com">http://node3.liudehan.com</a>:8000/
 
         <img class="mx-auto" alt="" src="https://i.loli.net/2019/06/04/5cf624fadf64176007.png" />   
     </p>
-<h6 id="进入容器后台">进入容器后台</h6>
+<h2 id="进入容器后台">进入容器后台</h2>
 <pre><code>docker exec -it my_nginx bash
 root@3694b7d63cab:/etc/nginx# ls -l
 total 40
@@ -238,7 +250,7 @@ lrwxrwxrwx 1 root root   22 Apr 16 13:08 modules -&gt; /usr/lib/nginx/modules
 -rw-r--r-- 1 root root  636 Apr 16 13:08 scgi_params
 -rw-r--r-- 1 root root  664 Apr 16 13:08 uwsgi_params
 -rw-r--r-- 1 root root 3610 Apr 16 13:08 win-utf
-</code></pre><h4 id="nginxconf是nginx主要配置文件可以通过more命令查看nginxconf">nginx.conf是nginx主要配置文件,可以通过more命令查看nginx.conf</h4>
+</code></pre><h2 id="nginxconf是nginx主要配置文件可以通过more命令查看nginxconf">nginx.conf是nginx主要配置文件,可以通过more命令查看nginx.conf</h2>
 <pre><code>user  nginx;
 worker_processes  1;
 error_log  /var/log/nginx/error.log warn;
@@ -265,7 +277,7 @@ http {
 
     include /etc/nginx/conf.d/*.conf;
 }
-</code></pre><h6 id="include-etcnginxconfdconf">include /etc/nginx/conf.d/*.conf;</h6>
+</code></pre><h2 id="include-etcnginxconfdconf">include /etc/nginx/conf.d/*.conf;</h2>
 <p>导入配置文件如下</p>
 <pre><code>root@3694b7d63cab:/etc/nginx/conf.d# cat default.conf
 server {
@@ -305,24 +317,24 @@ server {
     #    deny  all;
     #}
 }
-</code></pre><h4 id="nginx配置文件挂载">nginx配置文件挂载</h4>
-<h4 id="创建文件和目录">创建文件和目录</h4>
+</code></pre><h2 id="nginx配置文件挂载">nginx配置文件挂载</h2>
+<h2 id="创建文件和目录">创建文件和目录</h2>
 <pre><code>mkdir -p  u01/nginx
 mkdir -p u01/nginx/conf.d
 touch u01/nginx/nginx.conf
 touch u01/nginx/conf.d/default.conf
-</code></pre><h4 id="删除镜像重新挂载">删除镜像，重新挂载</h4>
+</code></pre><h2 id="删除镜像重新挂载">删除镜像，重新挂载</h2>
 <pre><code>docker stop my_nginx
 docker rm my_nginx
 docker run --name=my_nginx -v /Users/liudehan/u01/nginx/nginx.conf:/etc/nginx/nginx.conf -v /Users/liudehan/u01/nginx/conf.d:/etc/nginx/conf.d -p 80:80 -d nginx
-</code></pre><h4 id="更改配置加载web应用">更改配置加载web应用</h4>
+</code></pre><h2 id="更改配置加载web应用">更改配置加载web应用</h2>
 <pre><code>docker stop my_nginx
 docker rm my_nginx
 docker run --name=my_nginx -v /Users/liudehan/u01/nginx/nginx.conf:/etc/nginx/nginx.conf -v /Users/liudehan/u01/nginx/conf.d:/etc/nginx/conf.d  -v /Users/liudehan/u01/nginx/www/dist-H5:/usr/share/nginx/html/dist-H5 -p 80:80 -d nginx
 </code></pre><p>
         <img class="mx-auto" alt="" src="https://i.loli.net/2019/06/05/5cf72142d5acb26428.png" />   
     </p>
-<h4 id="创建tomcat应用">创建Tomcat应用</h4>
+<h2 id="创建tomcat应用">创建Tomcat应用</h2>
 <pre><code>应用1
 docker run --name=my_tomcat1 -v/Users/liudehan/u01/webapps:/usr/local/tomcat/webapps -p 8001:8080 -d tomcat
 应用2
@@ -336,12 +348,12 @@ my_tomcat2
 
         <img class="mx-auto" alt="" src="https://i.loli.net/2019/06/05/5cf724f54fab993157.png" />   
     </p>
-<h6 id="nginx实现反向代理和负载均衡">nginx实现反向代理和负载均衡</h6>
-<h6 id="nginx配置如下">nginx配置如下</h6>
-<h6 id="defaultconf">default.conf</h6>
+<h2 id="nginx实现反向代理和负载均衡">nginx实现反向代理和负载均衡</h2>
+<h2 id="nginx配置如下">nginx配置如下</h2>
+<h2 id="defaultconf">default.conf</h2>
 <pre><code>location / {
     proxy_pass   http://tomcat_server;
-</code></pre><h4 id="nginxconf配置如下">nginx.conf配置如下</h4>
+</code></pre><h2 id="nginxconf配置如下">nginx.conf配置如下</h2>
 <pre><code>http里面
 upstream tomcat {   //这不能为tomcat_server这样的，这是域名
       server t1:8080;
@@ -375,13 +387,13 @@ upstream tomcat {   //这不能为tomcat_server这样的，这是域名
         
         <li><a href="/2020/12/18/kubernetes-ConfigMap-use.html">kubernetes-ConfigMap使用</a></li>
         
+        <li><a href="/2020/12/08/kubernetes-StatefulSet-introduce.html">kubernetes-StatefulSet介绍</a></li>
+        
+        <li><a href="/2020/12/18/kubernetes-pv-pvc-basic-introduction.html">kubernetes-pv、pvc基础介绍</a></li>
+        
+        <li><a href="/2020/12/18/kubernetes-label-introduction.html">kubernetes标签介绍</a></li>
+        
         <li><a href="/2020/08/09/kubernetes-pod-one.html">Kubernetes之pod(一)</a></li>
-        
-        <li><a href="/2019/12/18/golang-gin-query-parameters-array-map.html">Golang Gin 实战（五）| 接收数组和 Map</a></li>
-        
-        <li><a href="/post/2019-12-15-golang-gin-query-parameters-source-code-analysis/">Golang Gin 实战（三）| 路由参数</a></li>
-        
-        <li><a href="/post/2019-12-13-golang-gin-parameters-in-path/">Golang Gin 实战（三）| 路由参数</a></li>
         
     </ul>
 </div>
@@ -486,6 +498,18 @@ upstream tomcat {   //这不能为tomcat_server这样的，这是域名
     </li>
     
     <li>
+        <a href="http://adler.icu/2020/12/18/kubernetes-pv-pvc-basic-introduction.html" title="kubernetes-pv、pvc基础介绍">kubernetes-pv、pvc基础介绍</a>
+    </li>
+    
+    <li>
+        <a href="http://adler.icu/2020/12/08/kubernetes-StatefulSet-introduce.html" title="kubernetes-StatefulSet介绍">kubernetes-StatefulSet介绍</a>
+    </li>
+    
+    <li>
+        <a href="http://adler.icu/2020/12/18/kubernetes-label-introduction.html" title="kubernetes标签介绍">kubernetes标签介绍</a>
+    </li>
+    
+    <li>
         <a href="http://adler.icu/2020/08/09/kubernetes-pod-one.html" title="Kubernetes之pod(一)">Kubernetes之pod(一)</a>
     </li>
     
@@ -514,7 +538,7 @@ upstream tomcat {   //这不能为tomcat_server这样的，这是域名
     
     <li><a href="http://adler.icu/categories/docker/">docker (1)</a></li>
     
-    <li><a href="http://adler.icu/categories/kubernetes/">kubernetes (3)</a></li>
+    <li><a href="http://adler.icu/categories/kubernetes/">kubernetes (6)</a></li>
     
 </ul>
     </section>
