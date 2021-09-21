@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>标签1 on adler</title>
+    <link>http://adler.icu/tags/%E6%A0%87%E7%AD%BE1/</link>
+    <description>Recent content in 标签1 on adler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 21 Sep 2021 13:50:09 +0800</lastBuildDate>
+    
+	<atom:link href="http://adler.icu/tags/%E6%A0%87%E7%AD%BE1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Microservice Go</title>
+      <link>http://adler.icu/Microservice-go/</link>
+      <pubDate>Tue, 21 Sep 2021 13:50:09 +0800</pubDate>
+      
+      <guid>http://adler.icu/Microservice-go/</guid>
+      <description>微服务 微服务概述 单体架构 1 Brower --&amp;gt; web server --&amp;gt; monolith(巨石应用) ---&amp;gt; Database 单体架构早期测试、开发部署简单，业务体量不复杂 巨石架构也是模块化逻辑最终被打包成单体应用 应用太复杂，以至于任何单个开发者都不可能搞懂它。应用无法扩展，可靠性很低，最终，敏捷性开发和部署变的很复杂。 单体架构拆分 ![image-20210713174201376](/Users/app/Library/Application Support/typora-user-images/image-20210713174201376.png)</description>
+    </item>
+    
+  </channel>
+</rss>

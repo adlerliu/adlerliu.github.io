@@ -6,10 +6,19 @@
     <description>Recent content in Posts on adler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 21 Sep 2021 10:08:27 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 21 Sep 2021 12:52:47 +0800</lastBuildDate>
     
 	<atom:link href="http://adler.icu/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Introduction</title>
+      <link>http://adler.icu/posts/introduction/</link>
+      <pubDate>Tue, 21 Sep 2021 12:52:47 +0800</pubDate>
+      
+      <guid>http://adler.icu/posts/introduction/</guid>
+      <description>个人简介 刘德涵（韵达科技运维)，多年运维经验 专注于Go语言(golang)、运维架构、CI/CD、infrastructure、etcd、k8s、istio，CI/CD，微服务应用部署，链路监控、helm，基础架构设计经验，相关gitops理念，并使用gitlab+Jenkins</description>
+    </item>
     
     <item>
       <title>归档</title>
@@ -18,15 +27,6 @@
       
       <guid>http://adler.icu/posts/Go-%E6%9E%B6%E6%9E%84%E5%AE%9E%E8%B7%B5-%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
       <description>微服务 微服务概述 单体架构 1 Brower --&amp;gt; web server --&amp;gt; monolith(巨石应用) ---&amp;gt; Database 单体架构早期测试、开发部署简单，业务体量不复杂 巨石架构也是模块化逻辑最终被打包成单体应用 应用太复杂，以至于任何单个开发者都不可能搞懂它。应用无法扩展，可靠性很低，最终，敏捷性开发和部署变的很复杂。 单体架构拆分 ![image-20210713174201376](/Users/app/Library/Application Support/typora-user-images/image-20210713174201376.png)</description>
-    </item>
-    
-    <item>
-      <title>归档</title>
-      <link>http://adler.icu/posts/my-first-post/</link>
-      <pubDate>Tue, 21 Sep 2021 10:08:27 +0800</pubDate>
-      
-      <guid>http://adler.icu/posts/my-first-post/</guid>
-      <description></description>
     </item>
     
   </channel>
