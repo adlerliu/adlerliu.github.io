@@ -1,31 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on adler</title>
+    <title>Tags on adler的博客</title>
     <link>http://adler.icu/tags/</link>
-    <description>Recent content in Tags on adler</description>
+    <description>Recent content in Tags on adler的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 21 Sep 2021 13:50:09 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 18 Dec 2020 21:55:00 +0800</lastBuildDate>
     
 	<atom:link href="http://adler.icu/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>标签1</title>
-      <link>http://adler.icu/tags/%E6%A0%87%E7%AD%BE1/</link>
-      <pubDate>Tue, 21 Sep 2021 13:50:09 +0800</pubDate>
+      <title>kubernetes</title>
+      <link>http://adler.icu/tags/kubernetes/</link>
+      <pubDate>Fri, 18 Dec 2020 21:55:00 +0800</pubDate>
       
-      <guid>http://adler.icu/tags/%E6%A0%87%E7%AD%BE1/</guid>
+      <guid>http://adler.icu/tags/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>标签2</title>
-      <link>http://adler.icu/tags/%E6%A0%87%E7%AD%BE2/</link>
-      <pubDate>Tue, 21 Sep 2021 13:50:09 +0800</pubDate>
+      <title>docker</title>
+      <link>http://adler.icu/tags/docker/</link>
+      <pubDate>Wed, 16 Dec 2020 21:55:00 +0800</pubDate>
       
-      <guid>http://adler.icu/tags/%E6%A0%87%E7%AD%BE2/</guid>
+      <guid>http://adler.icu/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>http://adler.icu/tags/golang/</link>
+      <pubDate>Wed, 18 Dec 2019 21:55:00 +0800</pubDate>
+      
+      <guid>http://adler.icu/tags/golang/</guid>
       <description></description>
     </item>
     

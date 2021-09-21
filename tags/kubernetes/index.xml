@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kubernetes on adler的博客</title>
+    <link>http://adler.icu/tags/kubernetes/</link>
+    <description>Recent content in kubernetes on adler的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 18 Dec 2020 21:55:00 +0800</lastBuildDate>
+    
+	<atom:link href="http://adler.icu/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes默认调度器的优先级与抢占机制</title>
+      <link>http://adler.icu/2020/12/18/k8s-microservice-priority-Preemption-mechanism.html</link>
+      <pubDate>Fri, 18 Dec 2020 21:55:00 +0800</pubDate>
+      
+      <guid>http://adler.icu/2020/12/18/k8s-microservice-priority-Preemption-mechanism.html</guid>
+      <description>优先级和抢占机制，解决的是 Pod 调度失败时该怎么办的问题 当pod调度失败后，会暂时被“搁置”，直到pod被更新，或者集群状态发生变化，调度器才会对这个pod进行重新调度 优先级不一致调度场景：高优先级的pod调度失败后，这个pod并不会被“搁置”，而是挤走某个Node上的一些低优先级的</description>
+    </item>
+    
+    <item>
+      <title>kubernetes-ConfigMap使用</title>
+      <link>http://adler.icu/2020/12/18/kubernetes-ConfigMap-use.html</link>
+      <pubDate>Tue, 08 Dec 2020 21:55:00 +0800</pubDate>
+      
+      <guid>http://adler.icu/2020/12/18/kubernetes-ConfigMap-use.html</guid>
+      <description>ConfigMap概述 ConfigMap用法如下: 1、生成容器内的环境变量 2、设置容器命令的启动参数(需设置环境变量) 3、以volume的形式挂载容器内部的文件或目录 ConfigMap以一个或多个key:value形式保存在kubernets系统中供应使用 可以通过yaml文件创建</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes之pod(一)</title>
+      <link>http://adler.icu/2020/08/09/kubernetes-pod-one.html</link>
+      <pubDate>Sun, 09 Aug 2020 21:55:00 +0800</pubDate>
+      
+      <guid>http://adler.icu/2020/08/09/kubernetes-pod-one.html</guid>
+      <description>kubernetes之Pod k8s为什么需要Pod pod，kubernetes项目的最小的API对象，Pod是kubernetes项目的原子单位 在docker容器中三句箴言 Namespaces做隔离，Cgroups做限制，rootfs做文件系统 在kubernetes项目中，把Li</description>
+    </item>
+    
+  </channel>
+</rss>

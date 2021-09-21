@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>adler的博客</title>
-    <link>http://adler.icu/</link>
-    <description>Recent content on adler的博客</description>
+    <title>Posts on adler的博客</title>
+    <link>http://adler.icu/post/</link>
+    <description>Recent content in Posts on adler的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Fri, 18 Dec 2020 21:55:00 +0800</lastBuildDate>
     
-	<atom:link href="http://adler.icu/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://adler.icu/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -72,33 +72,6 @@
       
       <guid>http://adler.icu/post/2019-12-15-golang-gin-query-parameters-source-code-analysis/</guid>
       <description>标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容</description>
-    </item>
-    
-    <item>
-      <title>关于我</title>
-      <link>http://adler.icu/about/</link>
-      <pubDate>Tue, 10 Mar 2015 00:13:27 +0000</pubDate>
-      
-      <guid>http://adler.icu/about/</guid>
-      <description>刘德涵（韵达科技运维)，云原生社区上海站核心成员，kubersphere上海站成员，OGA行业数字化转型与开源创新工作组 专注于Go语言(golang)、运维架构、CI/CD、infrastructure、etcd、k8s、istio，CI/CD，微服务应用部署，链路监控、helm</description>
-    </item>
-    
-    <item>
-      <title>归档</title>
-      <link>http://adler.icu/archives/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://adler.icu/archives/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>搜索</title>
-      <link>http://adler.icu/search/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://adler.icu/search/</guid>
-      <description></description>
     </item>
     
   </channel>

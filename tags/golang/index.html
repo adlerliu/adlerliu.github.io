@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-	<meta name="generator" content="Hugo 0.71.1" />
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,17 +9,21 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>adler的博客 | 专注于Go语言(golang)、运维架构、CI/CD、adler、gitops、infrastructure、etcd、k8s、istio</title>
-    <meta property="og:title" content="adler的博客 | 专注于Go语言(golang)、运维架构、CI/CD、adler、gitops、infrastructure、etcd、k8s、istio">
-    <meta property="og:type" content="website">
+    <title>golang | adler的博客</title>
+    <meta property="og:title" content="golang - adler的博客">
+    <meta property="og:type" content="article">
+        
+        
     <meta name="Keywords" content="golang,go语言,运维架构,CI/CD,adler,infrastructure,etcd,k8s,istio">
-    <meta name="description" content="专注于IT互联网，包括但不限于Go语言(golang)、CI/CD、infrastructure、K8S">
-    <meta property="og:url" content="http://adler.icu/">
+    <meta name="description" content="golang">
+        
+    <meta name="author" content="adler">
+    <meta property="og:url" content="http://adler.icu/tags/golang/">
     <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
     <link rel="stylesheet" href='/css/style.css'>
-    <link rel="alternate" type="application/rss+xml" href="http://adler.icu/index.xml" title="adler的博客" />
+    <link rel="alternate" type="application/rss+xml" href="http://adler.icu/tags/golang/index.xml" title="adler的博客" />
     <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
@@ -42,17 +45,15 @@
         <div class="col-group">
             <div class="site-name ">
                 
-                    <h1>
-                        <a id="logo" href="http://adler.icu">
-                            adler的博客
-                        </a>
-                    </h1>
+                    <a id="logo" href="http://adler.icu">
+                        adler的博客
+                    </a>
                 
                 <p class="description">专注于Go语言(golang)、运维架构、CI/CD、adler、gitops、infrastructure、etcd、k8s、istio</p>
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="current" href="http://adler.icu">首页</a>
+                    <a class="" href="http://adler.icu">首页</a>
                     
                     <a  href="http://adler.icu/archives/" title="归档">归档</a>
                     
@@ -72,167 +73,84 @@
                     
 <div class="res-cons">
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="http://adler.icu/2020/12/18/k8s-microservice-priority-Preemption-mechanism.html" title="Kubernetes默认调度器的优先级与抢占机制">Kubernetes默认调度器的优先级与抢占机制</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年12月18日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/categories/kubernetes'>kubernetes</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            优先级和抢占机制，解决的是 Pod 调度失败时该怎么办的问题 当pod调度失败后，会暂时被“搁置”，直到pod被更新，或者集群状态发生变化，调度器才会对这个pod进行重新调度 优先级不一致调度场景：高优先级的pod调度失败后，这个pod并不会被“搁置”，而是挤走某个Node上的一些低优先级的……
-        </div>
-        <p class="readmore"><a href="http://adler.icu/2020/12/18/k8s-microservice-priority-Preemption-mechanism.html">阅读全文</a></p>
-    </article>
+    <h3 class="archive-title">
+        包含标签
+        <span class="keyword">golang</span>
+        的文章
+    </h3>
+    
+
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="http://adler.icu/2020/12/18/docker-nginx-reverse-proxyme-load-balancing-configuration.html" title="docker下nginx反向代理和负载均衡配置">docker下nginx反向代理和负载均衡配置</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年12月16日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/categories/docker'>docker</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            docker下nginx反向代理和负载均衡配置 拉取镜像 docker pull nginx docker pull tomcat 启动docker docker run --name=my_nginx -p 8000:80 -d nginx --name: 为nginx容器指定一个名称方便管理 -p: 将nginx内部80端口代理到宿主机8000端口,可以通过宿主机:8000访问nginx 80端口 -d: 后台运行 查看容器运行情况 docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 3694b7d63cab……
-        </div>
-        <p class="readmore"><a href="http://adler.icu/2020/12/18/docker-nginx-reverse-proxyme-load-balancing-configuration.html">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="http://adler.icu/2020/12/18/kubernetes-ConfigMap-use.html" title="kubernetes-ConfigMap使用">kubernetes-ConfigMap使用</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年12月8日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/categories/kubernetes'>kubernetes</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            ConfigMap概述 ConfigMap用法如下: 1、生成容器内的环境变量 2、设置容器命令的启动参数(需设置环境变量) 3、以volume的形式挂载容器内部的文件或目录 ConfigMap以一个或多个key:value形式保存在kubernets系统中供应使用 可以通过yaml文件创建……
-        </div>
-        <p class="readmore"><a href="http://adler.icu/2020/12/18/kubernetes-ConfigMap-use.html">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="http://adler.icu/2020/08/09/kubernetes-pod-one.html" title="Kubernetes之pod(一)">Kubernetes之pod(一)</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年8月9日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/categories/kubernetes'>kubernetes</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            kubernetes之Pod k8s为什么需要Pod pod，kubernetes项目的最小的API对象，Pod是kubernetes项目的原子单位 在docker容器中三句箴言 Namespaces做隔离，Cgroups做限制，rootfs做文件系统 在kubernetes项目中，把Li……
-        </div>
-        <p class="readmore"><a href="http://adler.icu/2020/08/09/kubernetes-pod-one.html">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="http://adler.icu/2019/12/18/golang-gin-query-parameters-array-map.html" title="Golang Gin 实战（五）| 接收数组和 Map">Golang Gin 实战（五）| 接收数组和 Map</a>
+                <a href="http://adler.icu/2019/12/18/golang-gin-query-parameters-array-map.html">Golang Gin 实战（五）| 接收数组和 Map</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
             2019年12月18日
         </date>
         
-        <div class="post-meta">
-            <span>|</span>
+        <div class="post-meta meta-category">
+            |
             
-            <span class="meta-category"><a href='/categories/Golang'>Golang</a></span>
+            <a href='/categories/Golang'>Golang</a>
             
         </div>
         
         <div class="post-content">
             标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容……
+            <p class="readmore"><a href="http://adler.icu/2019/12/18/golang-gin-query-parameters-array-map.html">阅读全文</a></p>
         </div>
-        <p class="readmore"><a href="http://adler.icu/2019/12/18/golang-gin-query-parameters-array-map.html">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="http://adler.icu/post/2019-12-13-golang-gin-parameters-in-path/" title="Golang Gin 实战（三）| 路由参数">Golang Gin 实战（三）| 路由参数</a>
+                <a href="http://adler.icu/post/2019-12-13-golang-gin-parameters-in-path/">Golang Gin 实战（三）| 路由参数</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
             2019年12月13日
         </date>
         
-        <div class="post-meta">
-            <span>|</span>
+        <div class="post-meta meta-category">
+            |
             
-            <span class="meta-category"><a href='/categories/Golang'>Golang</a></span>
+            <a href='/categories/Golang'>Golang</a>
             
         </div>
         
         <div class="post-content">
             标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容……
+            <p class="readmore"><a href="http://adler.icu/post/2019-12-13-golang-gin-parameters-in-path/">阅读全文</a></p>
         </div>
-        <p class="readmore"><a href="http://adler.icu/post/2019-12-13-golang-gin-parameters-in-path/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="http://adler.icu/post/2019-12-15-golang-gin-query-parameters-source-code-analysis/" title="Golang Gin 实战（三）| 路由参数">Golang Gin 实战（三）| 路由参数</a>
+                <a href="http://adler.icu/post/2019-12-15-golang-gin-query-parameters-source-code-analysis/">Golang Gin 实战（三）| 路由参数</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
             2019年12月13日
         </date>
         
-        <div class="post-meta">
-            <span>|</span>
+        <div class="post-meta meta-category">
+            |
             
-            <span class="meta-category"><a href='/categories/Golang'>Golang</a></span>
+            <a href='/categories/Golang'>Golang</a>
             
         </div>
         
         <div class="post-content">
             标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容……
+            <p class="readmore"><a href="http://adler.icu/post/2019-12-15-golang-gin-query-parameters-source-code-analysis/">阅读全文</a></p>
         </div>
-        <p class="readmore"><a href="http://adler.icu/post/2019-12-15-golang-gin-query-parameters-source-code-analysis/">阅读全文</a></p>
     </article>
     
+
     
 
 

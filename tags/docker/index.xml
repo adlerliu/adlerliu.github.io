@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on adler的博客</title>
+    <link>http://adler.icu/tags/docker/</link>
+    <description>Recent content in docker on adler的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 16 Dec 2020 21:55:00 +0800</lastBuildDate>
+    
+	<atom:link href="http://adler.icu/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>docker下nginx反向代理和负载均衡配置</title>
+      <link>http://adler.icu/2020/12/18/docker-nginx-reverse-proxyme-load-balancing-configuration.html</link>
+      <pubDate>Wed, 16 Dec 2020 21:55:00 +0800</pubDate>
+      
+      <guid>http://adler.icu/2020/12/18/docker-nginx-reverse-proxyme-load-balancing-configuration.html</guid>
+      <description>docker下nginx反向代理和负载均衡配置 拉取镜像 docker pull nginx docker pull tomcat 启动docker docker run --name=my_nginx -p 8000:80 -d nginx --name: 为nginx容器指定一个名称方便管理 -p: 将nginx内部80端口代理到宿主机8000端口,可以通过宿主机:8000访问nginx 80端口 -d: 后台运行 查看容器运行情况 docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 3694b7d63cab</description>
+    </item>
+    
+  </channel>
+</rss>
