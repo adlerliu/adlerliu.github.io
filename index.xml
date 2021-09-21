@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>飞雪无情的博客</title>
-    <link>https://adlerliu.github.io/</link>
-    <description>Recent content on 飞雪无情的博客</description>
+    <title>adler</title>
+    <link>https://adler.icu/</link>
+    <description>Recent content on adler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 21 Sep 2021 10:08:27 +0800</lastBuildDate>
     
-	<atom:link href="https://adlerliu.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://adler.icu/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>My First Post</title>
-      <link>https://adlerliu.github.io/posts/my-first-post/</link>
+      <link>https://adler.icu/posts/my-first-post/</link>
       <pubDate>Tue, 21 Sep 2021 10:08:27 +0800</pubDate>
       
-      <guid>https://adlerliu.github.io/posts/my-first-post/</guid>
+      <guid>https://adler.icu/posts/my-first-post/</guid>
       <description></description>
     </item>
     
