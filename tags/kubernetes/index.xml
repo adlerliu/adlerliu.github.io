@@ -2,102 +2,102 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kubernetes on adler的博客</title>
-    <link>http://adler.icu/tags/kubernetes/</link>
+    <link>https://adler.icu/tags/kubernetes/</link>
     <description>Recent content in kubernetes on adler的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Fri, 18 Dec 2020 21:55:00 +0800</lastBuildDate>
     
-	<atom:link href="http://adler.icu/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://adler.icu/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Kubernetes默认调度器的优先级与抢占机制</title>
-      <link>http://adler.icu/2020/12/18/k8s-microservice-priority-Preemption-mechanism.html</link>
+      <link>https://adler.icu/2020/12/18/k8s-microservice-priority-Preemption-mechanism.html</link>
       <pubDate>Fri, 18 Dec 2020 21:55:00 +0800</pubDate>
       
-      <guid>http://adler.icu/2020/12/18/k8s-microservice-priority-Preemption-mechanism.html</guid>
+      <guid>https://adler.icu/2020/12/18/k8s-microservice-priority-Preemption-mechanism.html</guid>
       <description>优先级和抢占机制，解决的是 Pod 调度失败时该怎么办的问题 当pod调度失败后，会暂时被“搁置”，直到pod被更新，或者集群状态发生变化，调度器才会对这个pod进行重新调度 优先级不一致调度场景：高优先级的pod调度失败后，这个pod并不会被“搁置”，而是挤走某个Node上的一些低优先级的</description>
     </item>
     
     <item>
       <title>kubernetes-ConfigMap使用</title>
-      <link>http://adler.icu/2020/12/18/kubernetes-ConfigMap-use.html</link>
+      <link>https://adler.icu/2020/12/18/kubernetes-ConfigMap-use.html</link>
       <pubDate>Tue, 08 Dec 2020 21:55:00 +0800</pubDate>
       
-      <guid>http://adler.icu/2020/12/18/kubernetes-ConfigMap-use.html</guid>
+      <guid>https://adler.icu/2020/12/18/kubernetes-ConfigMap-use.html</guid>
       <description>ConfigMap概述 ConfigMap用法如下: 1、生成容器内的环境变量 2、设置容器命令的启动参数(需设置环境变量) 3、以volume的形式挂载容器内部的文件或目录 ConfigMap以一个或多个key:value形式保存在kubernets系统中供应使用 可以通过yaml文件创建</description>
     </item>
     
     <item>
       <title>kubernetes-pv、pvc基础介绍</title>
-      <link>http://adler.icu/2020/12/18/kubernetes-pv-pvc-basic-introduction.html</link>
+      <link>https://adler.icu/2020/12/18/kubernetes-pv-pvc-basic-introduction.html</link>
       <pubDate>Tue, 08 Dec 2020 21:55:00 +0800</pubDate>
       
-      <guid>http://adler.icu/2020/12/18/kubernetes-pv-pvc-basic-introduction.html</guid>
+      <guid>https://adler.icu/2020/12/18/kubernetes-pv-pvc-basic-introduction.html</guid>
       <description>pv，pvc概念 pv定义 pv：描述的是持久化存储数据卷。 这个API主要定义的一个持久化存储在宿主机上的目录，比如NFS，ceph类型的pv pv定义如下 apiVersion: v1 kind: PersistentVolume metadata: name: nfs spec: storageClassName: manual capacity: storage: 1Gi accessModes: - ReadWriteMany nfs: server: 10.244.1.4 path: &amp;quot;/&amp;quot; pvc定义 PVC 描述的，则是 Pod 所希望使用的持久化存储的属性。比如，Volume 存储的大小、可</description>
     </item>
     
     <item>
       <title>kubernetes-StatefulSet介绍</title>
-      <link>http://adler.icu/2020/12/08/kubernetes-StatefulSet-introduce.html</link>
+      <link>https://adler.icu/2020/12/08/kubernetes-StatefulSet-introduce.html</link>
       <pubDate>Tue, 08 Dec 2020 21:55:00 +0800</pubDate>
       
-      <guid>http://adler.icu/2020/12/08/kubernetes-StatefulSet-introduce.html</guid>
+      <guid>https://adler.icu/2020/12/08/kubernetes-StatefulSet-introduce.html</guid>
       <description>StatefulSet介绍 StatefulSet设计模式 1、拓扑状态 这种情况意味着，应用的多个实例之间不是完全对等的关系。这些应用实例，必须按照某些顺序启动，比如应用的主节点 A 要先于从节点 B 启动。 而如果你把 A 和 B 两个 Pod删除掉，它们再次被创建出来时也必须严格按照这个顺序才行。并</description>
     </item>
     
     <item>
       <title>kubernetes标签介绍</title>
-      <link>http://adler.icu/2020/12/18/kubernetes-label-introduction.html</link>
+      <link>https://adler.icu/2020/12/18/kubernetes-label-introduction.html</link>
       <pubDate>Tue, 08 Dec 2020 21:55:00 +0800</pubDate>
       
-      <guid>http://adler.icu/2020/12/18/kubernetes-label-introduction.html</guid>
+      <guid>https://adler.icu/2020/12/18/kubernetes-label-introduction.html</guid>
       <description>kubernetes标签介绍 用来组织kubernetes的资料，标签可以附加到任何资源的任意键值对，用以选择具有该标签的资源(标签选择器)。标签的key在资源中是唯一的，一个资源可以拥有多个标签。 创建pod定义标签，案例如下 kubia-manual-with-labels.yaml apiVersion: v1 kind: Pod metadata: name: kubia-manual-v2 labels: creation_method: manual env: prod spec: containers: - image: tomcat imagePullPolicy: Never name: kubia ports: - containerPort: 8080 protocol: TCP</description>
     </item>
     
     <item>
       <title>Kubernetes中的CI/CD</title>
-      <link>http://adler.icu/2020/08/09/kubernetes-CI/CD-use.html</link>
+      <link>https://adler.icu/2020/08/09/kubernetes-CI/CD-use.html</link>
       <pubDate>Sun, 09 Aug 2020 21:55:00 +0800</pubDate>
       
-      <guid>http://adler.icu/2020/08/09/kubernetes-CI/CD-use.html</guid>
+      <guid>https://adler.icu/2020/08/09/kubernetes-CI/CD-use.html</guid>
       <description>CI/CD 概念 CI/CD 其实早在很多年前就已经诞生了，主要是为了将频繁的变更测试、构建、交付和部署等进行自动化，减少手工操作。 CI 持续集成主要是在代码更改时自动分支合并、构建并执行一系列的测试（包括单元测试、集成测试、端到端测试等），确保这些变更不会破坏原来的应用。 CD 持续交付和部署则是 CI 测试通过之</description>
     </item>
     
     <item>
       <title>Kubernetes之pod(一)</title>
-      <link>http://adler.icu/2020/08/09/kubernetes-pod-one.html</link>
+      <link>https://adler.icu/2020/08/09/kubernetes-pod-one.html</link>
       <pubDate>Sun, 09 Aug 2020 21:55:00 +0800</pubDate>
       
-      <guid>http://adler.icu/2020/08/09/kubernetes-pod-one.html</guid>
+      <guid>https://adler.icu/2020/08/09/kubernetes-pod-one.html</guid>
       <description>kubernetes之Pod k8s为什么需要Pod pod，kubernetes项目的最小的API对象，Pod是kubernetes项目的原子单位 在docker容器中三句箴言 Namespaces做隔离，Cgroups做限制，rootfs做文件系统 在kubernetes项目中，把Li</description>
     </item>
     
     <item>
       <title>Kubernetes之pod(三)</title>
-      <link>http://adler.icu/2020/08/09/kubernetes-pod-three.html</link>
+      <link>https://adler.icu/2020/08/09/kubernetes-pod-three.html</link>
       <pubDate>Sun, 09 Aug 2020 21:55:00 +0800</pubDate>
       
-      <guid>http://adler.icu/2020/08/09/kubernetes-pod-three.html</guid>
+      <guid>https://adler.icu/2020/08/09/kubernetes-pod-three.html</guid>
       <description>Projected Volume 这种特殊的 Volume，叫作 Projected Volume，你可以把它翻译为“投射数据卷” 在 Kubernetes 中，有几种特殊的 Volume，它们存在的意义不是为了存放容器里的数据，也不是 用来进行容器和宿主机之间的数据交换。这些特殊 Volume 的作用，是为容器提供预先定义好的数 据。所以，从容器的角度来看，这些 Volume 里的信息</description>
     </item>
     
     <item>
       <title>Kubernetes之pod(二)</title>
-      <link>http://adler.icu/2020/08/09/kubernetes-pod-two.html</link>
+      <link>https://adler.icu/2020/08/09/kubernetes-pod-two.html</link>
       <pubDate>Sun, 09 Aug 2020 21:55:00 +0800</pubDate>
       
-      <guid>http://adler.icu/2020/08/09/kubernetes-pod-two.html</guid>
+      <guid>https://adler.icu/2020/08/09/kubernetes-pod-two.html</guid>
       <description>k8s之Pod基本概念 kubernetes中最小编排单位是Pod，容器Container就是Pod的一个普通字段 那么那些是Pod的，那些是Container属性 而如果你能把 Pod 看成传统环境里的“机器”、把容器看作是运行在这个“机器”里的“用户程 序”，那么很多关于 Pod 对象的设计就非常容</description>
     </item>
     
     <item>
       <title>Kubernetes基于Kubernetes的多云和混合云</title>
-      <link>http://adler.icu/2020/12/18/k8s-multi-cloud-and-hybrid-cloud.html</link>
+      <link>https://adler.icu/2020/12/18/k8s-multi-cloud-and-hybrid-cloud.html</link>
       <pubDate>Thu, 06 Aug 2020 21:55:00 +0800</pubDate>
       
-      <guid>http://adler.icu/2020/12/18/k8s-multi-cloud-and-hybrid-cloud.html</guid>
+      <guid>https://adler.icu/2020/12/18/k8s-multi-cloud-and-hybrid-cloud.html</guid>
       <description>什么是多云和混合云 伴随着Kubernetes和云原生的普及，高可用、高并发以及弹性突发等也成为很多应用程序的必备要求。 而要实现这些功能，就需要应用程序不仅可以跨可用区和跨地区部署，还需要在云服务商容量不足或发生故障时自动切换到其他的云服务商或者混合云环境中去。 并且，很多人也不希望</description>
     </item>
     
