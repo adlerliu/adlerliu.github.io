@@ -214,12 +214,12 @@
         
         <div class="post-content">
             <h2 id="优先级和抢占机制解决的是-pod-调度失败时该怎么办的问题">优先级和抢占机制，解决的是 Pod 调度失败时该怎么办的问题</h2>
-<pre><code>当pod调度失败后，会暂时被“搁置”，直到pod被更新，或者集群状态发生变化，调度器才会对这个pod进行重新调度
+<pre tabindex="0"><code>当pod调度失败后，会暂时被“搁置”，直到pod被更新，或者集群状态发生变化，调度器才会对这个pod进行重新调度
 
 优先级不一致调度场景：高优先级的pod调度失败后，这个pod并不会被“搁置”，而是挤走某个Node上的一些低优先级的pod。保证高优先级pod调度成功。
 </code></pre><h2 id="优先级机制">优先级机制</h2>
 <h2 id="优先级和抢占机制是在-110-版本后才逐步可用的">优先级和抢占机制是在 1.10 版本后才逐步可用的</h2>
-<pre><code>Kubernetes里提交一个PriorityClass的定义，实现优先级和抢占机制
+<pre tabindex="0"><code>Kubernetes里提交一个PriorityClass的定义，实现优先级和抢占机制
 
 apiVersion: scheduling.k8s.io/v1beta1
 kind: PriorityClass
@@ -231,7 +231,7 @@ description: &quot;This priority class should be used for high priority service 
 
 
 </code></pre><h2 id="实现如下">实现如下</h2>
-<pre><code>上面这个YAML文件，定义的是一个名叫high-priority的PriorityClass，其中value的值是1000000(一百万)
+<pre tabindex="0"><code>上面这个YAML文件，定义的是一个名叫high-priority的PriorityClass，其中value的值是1000000(一百万)
 
 Kubernetes规定，优先级是一个32bit的整数，最大值不超过1000000000（10 亿，1 billion），并且值越大代表优先级越高。
 而超过10亿的值，是被Kubernetes保留分配给系统pod使用的。保证系统pod不会被用户抢占掉，比如kube-proxy等
@@ -240,7 +240,7 @@ Kubernetes规定，优先级是一个32bit的整数，最大值不超过10000000
 而如果这个值是 false，就表示我们只希望声明使用该 PriorityClass 的 Pod 拥有值为 1000000 的优先级
 而对于没有声明 PriorityClass 的 Pod 来说，它们的优先级就是 0
 </code></pre><h2 id="pod声明使用priorityclass">pod声明使用PriorityClass</h2>
-<pre><code>apiVersion: v1
+<pre tabindex="0"><code>apiVersion: v1
 kind: Pod
 metadata:
   name: nginx
@@ -253,17 +253,17 @@ spec:
     imagePullPolicy: IfNotPresent
   priorityClassName: high-priority
 </code></pre><h2 id="实现如下-1">实现如下</h2>
-<pre><code>Pod 通过 priorityClassName 字段，声明了要使用名叫 high-priority 的 PriorityClass
+<pre tabindex="0"><code>Pod 通过 priorityClassName 字段，声明了要使用名叫 high-priority 的 PriorityClass
  Pod 被提交给 Kubernetes 之后，Kubernetes 的 PriorityAdmissionController 就会自动将这个 Pod 的 spec.priority 字段设置为 1000000
  调度器里维护着一个调度队列。所以，当 Pod 拥有了优先级之后，高优先级的 Pod 就可能会比低优先级的 Pod 提前出队，从而尽早完成调度过程
  这个过程，就是“优先级”这个概念在 Kubernetes 里的主要体现
 </code></pre><h2 id="抢占机制">抢占机制</h2>
-<pre><code>当一个高优先级的 Pod 调度失败的时候，调度器的抢占能力就会被触发
+<pre tabindex="0"><code>当一个高优先级的 Pod 调度失败的时候，调度器的抢占能力就会被触发
 这时候，调度器就会从当前集群里寻找一个节点，是得当这个节点上的一个或者多个低优先级pod被删除后，待调度的高优先级pod就可以调度到这个节点上。这个过程就是k8s的抢占体现
 
 调度的高优先级 Pod 称为“抢占者”
 </code></pre><h2 id="抢占过程">抢占过程</h2>
-<pre><code>调度的高优先级 Pod 称为“抢占者”
+<pre tabindex="0"><code>调度的高优先级 Pod 称为“抢占者”
 上述抢占过程发生时，抢占者并不会立刻被调度到被抢占的 Node 上
 调度器只会将抢占者的 spec.nominatedNodeName 字段，设置为被抢占的 Node 的名字。然后，抢占者会重新进入下一个调度周期，然后在新的调度周期里来决定是不是要运行在被抢占的节点上。
 这当然也就意味着，即使在下一个调度周期，调度器也不会保证抢占者一定会运行在被抢占的节点上。
@@ -272,7 +272,7 @@ spec:
 
 而在抢占者等待被调度的过程中，如果有其他更高优先级的 Pod 也要抢占同一个节点，那么调度器就会清空原抢占者的 spec.nominatedNodeName 字段，从而允许更高优先级的抢占者执行抢占，并且，这也就是得原抢占者本身，也有机会去重新抢占其他节点。这些，都是设置 nominatedNodeName 字段的主要目的
 </code></pre><h2 id="kubernetes-调度器里的抢占机制又是如何设计的呢">Kubernetes 调度器里的抢占机制，又是如何设计的呢</h2>
-<pre><code>抢占发生的原因一定是一个高优先级的pod调度失败
+<pre tabindex="0"><code>抢占发生的原因一定是一个高优先级的pod调度失败
 我们还是称这个 Pod 为“抢占者”，称被抢占的 Pod 为“牺牲者”（victims）
 
 而 Kubernetes 调度器实现抢占算法的一个最重要的设计，就是在调度队列的实现里，使用了两个不同的队列
@@ -284,7 +284,7 @@ spec:
 而这里的一个关键点就在于，当一个 unschedulableQ 里的 Pod 被更新之后，调度器会自动把这个 Pod 移动到 activeQ 里，从而给这些调度失败的 Pod “重新做人”的机会
 调度失败之后，抢占者就会被放进 unschedulableQ 里面
 </code></pre><h2 id="触发调度器为抢占者寻找牺牲者的流程">触发调度器为抢占者寻找牺牲者的流程</h2>
-<pre><code>第一步，调度器会检查这次失败事件的原因，来确认抢占是不是可以帮助抢占者找到一个新节点。
+<pre tabindex="0"><code>第一步，调度器会检查这次失败事件的原因，来确认抢占是不是可以帮助抢占者找到一个新节点。
 这是因为有很多 Predicates 的失败是不能通过抢占来解决的。比如，PodFitsHost 算法（负责的是，检查 Pod 的 nodeSelector 与 Node 的名字是否匹配），这种情况下，除非 Node 的名字发生变化，否则你即使删除再多的 
 
 第二步，如果确定抢占可以发生，那么调度器就会把自己缓存的所有节点信息复制一份，然后使用这个副本来模拟抢占过程
@@ -293,7 +293,7 @@ spec:
 
 当遍历完所有的节点之后，调度器会在上述模拟产生的所有抢占结果里做一个选择，找出最佳结果。而这一步的判断原则，就是尽量减少抢占对整个系统的影响。比如，需要抢占的 Pod 越少越好，需要抢占的 Pod 的优先级越低越好，等等
 </code></pre><h2 id="调度器就可以真正开始抢占的操作">调度器就可以真正开始抢占的操作</h2>
-<pre><code>第一步，调度器会检查牺牲者列表，清理这些 Pod 所携带的 nominatedNodeName 字段。
+<pre tabindex="0"><code>第一步，调度器会检查牺牲者列表，清理这些 Pod 所携带的 nominatedNodeName 字段。
 第二步，调度器会把抢占者的 nominatedNodeName，设置为被抢占的 Node 的名字。
 第三步，调度器会开启一个 Goroutine，同步地删除牺牲者
 
@@ -311,7 +311,7 @@ spec:
 
 而我们需要执行第二遍 Predicates 算法的原因，则是因为“潜在的抢占者”最后不一定会运行在待考察的 Node 上
 </code></pre><h2 id="思考题">思考题</h2>
-<pre><code>当整个集群发生可能会影响调度结果的变化（比如，添加或者更新 Node，添加和更新 PV、Service 等）时，调度器会执行一个被称为 MoveAllToActiveQueue 的操作，把所调度失败的 Pod 从 unscheduelableQ 移动到 activeQ 里面。请问这是为什么？
+<pre tabindex="0"><code>当整个集群发生可能会影响调度结果的变化（比如，添加或者更新 Node，添加和更新 PV、Service 等）时，调度器会执行一个被称为 MoveAllToActiveQueue 的操作，把所调度失败的 Pod 从 unscheduelableQ 移动到 activeQ 里面。请问这是为什么？
 
 一个相似的问题是，当一个已经调度成功的 Pod 被更新时，调度器则会将 unschedulableQ 里所有跟这个 Pod 有 Affinity/Anti-affinity 关系的 Pod，移动到 activeQ 里面。请问这又是为什么呢？
 

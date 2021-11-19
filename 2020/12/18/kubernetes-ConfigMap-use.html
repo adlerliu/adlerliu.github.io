@@ -229,7 +229,7 @@
         
         <div class="post-content">
             <h2 id="configmap概述">ConfigMap概述</h2>
-<pre><code>ConfigMap用法如下:
+<pre tabindex="0"><code>ConfigMap用法如下:
 1、生成容器内的环境变量
 2、设置容器命令的启动参数(需设置环境变量)
 3、以volume的形式挂载容器内部的文件或目录
@@ -237,7 +237,7 @@ ConfigMap以一个或多个key:value形式保存在kubernets系统中供应使�
 可以通过yaml文件创建或者kubectl create configmap命令创建
 </code></pre><h2 id="创建configmap">创建ConfigMap</h2>
 <h2 id="通过yaml文件创建">通过yaml文件创建</h2>
-<pre><code>apiVersion: v1
+<pre tabindex="0"><code>apiVersion: v1
 kind: ConfigMap 
 metadata:
   name: cm-appvars
@@ -245,9 +245,9 @@ data:
   apploglevel: info 
   appdatadir: /var/data
 </code></pre><h2 id="创建该configmap">创建该ConfigMap</h2>
-<pre><code>kubectl create -f cm-appvars.yaml
+<pre tabindex="0"><code>kubectl create -f cm-appvars.yaml
 </code></pre><h2 id="查看创建好的configmap">查看创建好的ConfigMap</h2>
-<pre><code>kubectl get configmap                                                          
+<pre tabindex="0"><code>kubectl get configmap                                                          
 NAME         DATA   AGE
 cm-appvars   2      78s
 
@@ -281,7 +281,7 @@ metadata:
   selfLink: /api/v1/namespaces/default/configmaps/cm-appvars
   uid: 0d935aee-8e71-11e9-a424-025000000001
 </code></pre><h2 id="将两个配置文件serverxml和loggingproperties定义configmap">将两个配置文件server.xml和logging.properties定义ConfigMap</h2>
-<pre><code>apiVersion: v1
+<pre tabindex="0"><code>apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cm-appconfigfiles
@@ -342,15 +342,15 @@ data:
     = INFO\r\norg.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/host-manager].handlers
     = 4host-manager.org.apache.juli.FileHandler\r\n\r\n&quot;
 </code></pre><h2 id="创建该configmap-1">创建该ConfigMap</h2>
-<pre><code>kubectl create -f cm-appconfigfiles.yaml
+<pre tabindex="0"><code>kubectl create -f cm-appconfigfiles.yaml
 </code></pre><h2 id="查看创建好的configmap-1">查看创建好的ConfigMap</h2>
-<pre><code>kubectl get configmap cm-appconfigfiles                                        
+<pre tabindex="0"><code>kubectl get configmap cm-appconfigfiles                                        
 NAME                DATA   AGE
 cm-appconfigfiles   2      108s
 </code></pre><h2 id="pod中使用configmap">Pod中使用ConfigMap</h2>
 <h2 id="使用上例的cm-appvarsyaml-configmap">使用上例的cm-appvars.yaml ConfigMap</h2>
 <h2 id="方法一">方法一</h2>
-<pre><code>apiVersion: v1
+<pre tabindex="0"><code>apiVersion: v1
 kind: Pod 
 metadata:
   name: cm-test-pod
@@ -373,20 +373,20 @@ spec:
   restartPolicy: Never 
 </code></pre><h6 id="创建pod">创建Pod</h6>
 <h6 id="由于测试该pod执行完启动命令退出并且不会自动启动">由于测试该Pod执行完启动命令退出,并且不会自动启动</h6>
-<pre><code>kubectl create -f cm-test-pod.yaml                                             
+<pre tabindex="0"><code>kubectl create -f cm-test-pod.yaml                                             
 pod/cm-test-pod created
 </code></pre><h6 id="查看停止的pod">查看停止的Pod</h6>
-<pre><code>kubectl get pods                                                               
+<pre tabindex="0"><code>kubectl get pods                                                               
 NAME          READY   STATUS      RESTARTS   AGE
 cm-test-pod   0/1     Completed   0          5m31s
 redis-php     2/2     Running     0          3h33m
 </code></pre><h6 id="查看日志看到环境变量正确设置">查看日志看到环境变量正确设置</h6>
-<pre><code>kubectl logs cm-test-pod                                                       
+<pre tabindex="0"><code>kubectl logs cm-test-pod                                                       
 APPDATADIR=/var/data
 APPLOGLEVEN=info
 </code></pre><h6 id="方法二">方法二</h6>
-<pre><code>1.6引入新的字段,envFrom,实现Pod环境中将ConfigMap(也可用于Secret资源对象)中定义的key=value自动生成环境变量
-</code></pre><pre><code>apiVersion: v1
+<pre tabindex="0"><code>1.6引入新的字段,envFrom,实现Pod环境中将ConfigMap(也可用于Secret资源对象)中定义的key=value自动生成环境变量
+</code></pre><pre tabindex="0"><code>apiVersion: v1
 kind: Pod 
 metadata:
   name: cm-test-pod
@@ -400,12 +400,12 @@ spec:
       name: cm-appvars        # 根据cm-appvars中的key=value自动生成环境变量
   restartPolicy: Never 
 </code></pre><h2 id="查看日志看到环境变量正确设置-1">查看日志看到环境变量正确设置</h2>
-<pre><code>kubectl logs cm-test-pod                                                       
+<pre tabindex="0"><code>kubectl logs cm-test-pod                                                       
 apploglevel=/var/data
 appdatadir=info
 </code></pre><h2 id="通过volumemount使用configmap">通过VolumeMount使用ConfigMap</h2>
 <h2 id="方法一-1">方法一</h2>
-<pre><code>apiVersion: v1 
+<pre tabindex="0"><code>apiVersion: v1 
 kind: Pod 
 metadata:
   name: cm-test-app
@@ -428,10 +428,10 @@ spec:
       - key: key-loggingproperties  # key=key-loggingproperties
         path: logging.properties    # value将logging.properties文件进行挂载
 </code></pre><h2 id="创建该pod使用上面创建的cm-appconfigfiles-configmap">创建该pod,使用上面创建的cm-appconfigfiles configmap</h2>
-<pre><code>kubectl create -f cm-test-app.yaml                                             
+<pre tabindex="0"><code>kubectl create -f cm-test-app.yaml                                             
 pod/cm-test-app created
 </code></pre><h2 id="登录容器查看">登录容器查看</h2>
-<pre><code>kubectl exec -it cm-test-app bash                                              
+<pre tabindex="0"><code>kubectl exec -it cm-test-app bash                                              
 root@cm-test-app:/usr/local/tomcat# cat /configfiles/server.xml
 &lt;?xml version='1.0' encoding='utf-8'?&gt;
 &lt;Server port=&quot;8005&quot; shutdown=&quot;SHUTDOWN&quot;&gt;
@@ -503,7 +503,7 @@ org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/manager].handler
 org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/host-manager].level = INFO
 org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/host-manager].handlers = 4host-manager.org.apache.juli.FileHandler
 </code></pre><h6 id="方法二-1">方法二</h6>
-<pre><code>apiVersion: v1 
+<pre tabindex="0"><code>apiVersion: v1 
 kind: Pod 
 metadata:
   name: cm-app
@@ -521,14 +521,14 @@ spec:
     configMap:
       name: cm-appconfigfiles       # 使用configmap&quot;cm-appconfigfiles&quot;
 </code></pre><h2 id="创建pod-1">创建Pod</h2>
-<pre><code>kubectl create -f cm-app.yaml                                                  
+<pre tabindex="0"><code>kubectl create -f cm-app.yaml                                                  
 pod/cm-app created
 </code></pre><h2 id="登录容器查看数据">登录容器查看数据</h2>
-<pre><code>kubectl exec -it cm-app bash
+<pre tabindex="0"><code>kubectl exec -it cm-app bash
 root@cm-app:/usr/local/tomcat# ls /configfiles/
 key-loggingproperties  key-serverxml
 </code></pre><h2 id="使用configmap的限制条件">使用ConfigMap的限制条件</h2>
-<pre><code>1、ConfigMap必须在Pod之前创建
+<pre tabindex="0"><code>1、ConfigMap必须在Pod之前创建
 2、ConfigMap受Namespace限制,只有处于相同Namespace中的Pod才可以引用它
 3、ConfigMap中配额管理还未实现
 静态Pod无法使用ConfigMap

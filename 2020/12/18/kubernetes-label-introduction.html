@@ -217,9 +217,9 @@
         
         <div class="post-content">
             <h2 id="kubernetes标签介绍">kubernetes标签介绍</h2>
-<pre><code>用来组织kubernetes的资料，标签可以附加到任何资源的任意键值对，用以选择具有该标签的资源(标签选择器)。标签的key在资源中是唯一的，一个资源可以拥有多个标签。
+<pre tabindex="0"><code>用来组织kubernetes的资料，标签可以附加到任何资源的任意键值对，用以选择具有该标签的资源(标签选择器)。标签的key在资源中是唯一的，一个资源可以拥有多个标签。
 </code></pre><h2 id="创建pod定义标签案例如下">创建pod定义标签，案例如下</h2>
-<pre><code>kubia-manual-with-labels.yaml
+<pre tabindex="0"><code>kubia-manual-with-labels.yaml
 apiVersion: v1 
 kind: Pod 
 metadata:
@@ -236,43 +236,43 @@ spec:
     - containerPort: 8080 
       protocol: TCP
 </code></pre><h2 id="查看pod标签">查看pod标签</h2>
-<pre><code>kubectl get po --show-labels
+<pre tabindex="0"><code>kubectl get po --show-labels
 NAME              READY   STATUS    RESTARTS   AGE    LABELS
 kubia-manual      1/1     Running   0          2m4s   &lt;none&gt;
 kubia-manual-v2   1/1     Running   0          2m4s   creation_method=manual,env=prod
 </code></pre><h2 id="展示有标签的列">展示有标签的列</h2>
-<pre><code> kubectl get po -L creation_method,env
+<pre tabindex="0"><code> kubectl get po -L creation_method,env
 NAME              READY   STATUS    RESTARTS   AGE   CREATION_METHOD   ENV
 kubia-manual      1/1     Running   0          4m
 kubia-manual-v2   1/1     Running   0          4m    manual            prod
 </code></pre><h2 id="添加标签到pod">添加标签到pod</h2>
-<pre><code>kubectl label po kubia-manual  creation_method=manual
+<pre tabindex="0"><code>kubectl label po kubia-manual  creation_method=manual
 修改后如下
 kubectl get po -L creation_method,env
 NAME              READY   STATUS    RESTARTS   AGE   CREATION_METHOD   ENV
 kubia-manual      1/1     Running   0          12m   manual
 kubia-manual-v2   1/1     Running   0          12m   manual            prod
 </code></pre><h2 id="修改pod值">修改pod值</h2>
-<pre><code>kubectl label po kubia-manual-v2 env=debug --overwrite 
+<pre tabindex="0"><code>kubectl label po kubia-manual-v2 env=debug --overwrite 
 修改后如下
 kubectl get po -L creation_method,env
 NAME              READY   STATUS    RESTARTS   AGE   CREATION_METHOD   ENV
 kubia-manual      1/1     Running   0          15m   manual
 kubia-manual-v2   1/1     Running   0          15m   manual            debug
 </code></pre><h2 id="仅当resource-version1时才更新-名为foo的pod上的label">仅当resource-version=1时才更新 名为foo的Pod上的label</h2>
-<pre><code>kubectl label pods foo status=unhealthy --resource-version=1
+<pre tabindex="0"><code>kubectl label pods foo status=unhealthy --resource-version=1
 </code></pre><h2 id="给-namespace-中的所有-pod-添加-label">给 namespace 中的所有 pod 添加 label</h2>
-<pre><code>kubectl label pods --all status=unhealthy
+<pre tabindex="0"><code>kubectl label pods --all status=unhealthy
 </code></pre><h2 id="删除名为bar的label">删除名为“bar”的label</h2>
-<pre><code>kubectl label pods foo bar-
+<pre tabindex="0"><code>kubectl label pods foo bar-
 </code></pre><h2 id="使用标签选择器列出pod子集">使用标签选择器列出pod子集</h2>
-<pre><code>标签选择器允许我们选择标记特定标签的pod子集，并对这些pod进行操作
+<pre tabindex="0"><code>标签选择器允许我们选择标记特定标签的pod子集，并对这些pod进行操作
 标签选择器根据资源的以下条件选择资源：
 1、包含(或不包含)使用特定键的标签
 2、包含具有特定建和值的标签
 3、包含具有特定键的标签，但其值与我们指定的不同
 </code></pre><h2 id="使用标签选择器列出pod">使用标签选择器列出pod</h2>
-<pre><code>列出标签为 creation_method=manual的
+<pre tabindex="0"><code>列出标签为 creation_method=manual的
 kubectl get po -l creation_method=manual
 NAME              READY   STATUS    RESTARTS   AGE
 kubia-manual      1/1     Running   0          28m
@@ -294,9 +294,9 @@ creation_method !=manual:标签为creation_method，值不等于manual
 env in(prod,devel),选择env标签，并且值为prod或者devel
 env notin(bug,ord)',选择env标签，但其值不是prod或者devel
 </code></pre><h2 id="使用标签选择器删除pod">使用标签选择器删除pod</h2>
-<pre><code>kubectl delete po -l creation_method=manual
+<pre tabindex="0"><code>kubectl delete po -l creation_method=manual
 </code></pre><h2 id="使用标签分配工作节点">使用标签分配工作节点</h2>
-<pre><code>kubectl label node foo gpu=true
+<pre tabindex="0"><code>kubectl label node foo gpu=true
 
 apiVersion: v1 
 kind: Pod 
@@ -315,7 +315,7 @@ spec:
 </code></pre><p>别的资源的标签操作跟pod标签操作一致，这里不再做重复操作</p>
 <h2 id="注解pod">注解pod</h2>
 <h2 id="添加和修改pod">添加和修改pod</h2>
-<pre><code>kubectl annotate pod kubia-manual-v2  mycompany.com/someannotation=&quot;foo far&quot;
+<pre tabindex="0"><code>kubectl annotate pod kubia-manual-v2  mycompany.com/someannotation=&quot;foo far&quot;
 kubectl describe  pod kubia-manual-v2
 Annotations:  mycompany.com/someannotation: foo far
 </code></pre>

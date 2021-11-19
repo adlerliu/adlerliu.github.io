@@ -213,7 +213,7 @@
         
         <div class="post-content">
             <h2 id="什么是多云和混合云">什么是多云和混合云</h2>
-<pre><code>伴随着Kubernetes和云原生的普及，高可用、高并发以及弹性突发等也成为很多应用程序的必备要求。
+<pre tabindex="0"><code>伴随着Kubernetes和云原生的普及，高可用、高并发以及弹性突发等也成为很多应用程序的必备要求。
 而要实现这些功能，就需要应用程序不仅可以跨可用区和跨地区部署，还需要在云服务商容量不足或发生故障时自动切换到其他的云服务商或者混合云环境中去。
 并且，很多人也不希望把自己的所有服务都绑定到某一个云服务商中
 多云和混合云就是指应用程序可以跨本地数据中心和多家云服务商混合部署，并可以按需在它们之间进行动态调度。
@@ -231,10 +231,10 @@
 <li>海量数据的访问延迟</li>
 <li>海量数据的访问延迟</li>
 </ul>
-<pre><code>为了解决这些问题，在 Kubernetes 诞生之前，其实就有很多云管理平台专门解决云平台资源异构的问题。
+<pre tabindex="0"><code>为了解决这些问题，在 Kubernetes 诞生之前，其实就有很多云管理平台专门解决云平台资源异构的问题。
 这些云管理平台解决了云资源的管理、成本的优化甚至是应用的 Devops 等各种问题，但一般并不负责实际管理应用的编排，所以在很多地方也被称之为多云 1.0。
 </code></pre><h2 id="kubernetes催生了多云20">Kubernetes催生了多云2.0</h2>
-<pre><code>在 Kubernetes 和容器技术诞生之前，要实现多云和混合云是相当难的，需要针对每一个云服务商进行定制化开发。
+<pre tabindex="0"><code>在 Kubernetes 和容器技术诞生之前，要实现多云和混合云是相当难的，需要针对每一个云服务商进行定制化开发。
 由于应用程序跟云服务商的接口绑定，所以也会导致迁移云服务商时需要从基础架构到应用程序都做相应的适配。
 这是很多人在上云时都会碰到的痛点，这可以通过云管理平台来解决。
 不过，目前的云管理平台更侧重于云资源的管理。
@@ -255,31 +255,31 @@
         <img class="mx-auto" alt="WX20200429-172013.png" src="https://i.loli.net/2020/04/29/ybKhC9SE1kW5ion.png" />   
     </p>
 <h2 id="多云和混合云都有哪些方案">多云和混合云都有哪些方案</h2>
-<pre><code>云管理管理平台已经解决了多云基础设施部署的问题，而 Kubernetes 实际上在各个云服务商之上成为了新的标准。
+<pre tabindex="0"><code>云管理管理平台已经解决了多云基础设施部署的问题，而 Kubernetes 实际上在各个云服务商之上成为了新的标准。
 自然，多云的下一步就是如何管理好多个不同 Kubernetes 集群中的应用，从而也诞生了很多开源或者商业的方案，这些方案各有侧重点。
 </code></pre><h2 id="第一种方案是侧重解决弹性突发的问题">第一种方案是侧重解决弹性突发的问题</h2>
-<pre><code>典型的是 Virtual Kubelet。在本地集群容量不足时，
+<pre tabindex="0"><code>典型的是 Virtual Kubelet。在本地集群容量不足时，
 可以把其他云服务商的容器产品作为虚拟节点接入到集群中来，从而就有了更大容量来运行应用。
 </code></pre><p>
         <img class="mx-auto" alt="WX20200429-172257.png" src="https://i.loli.net/2020/04/29/mMBzX7JWe435SnH.png" />   
     </p>
 <h2 id="第二种方案是侧重解决服务治理和流量调度的问题">第二种方案是侧重解决服务治理和流量调度的问题</h2>
-<pre><code>典型的是 Service Mesh。不同集群的网络可以通过 Service Mesh（或者 Mesh Federation）打通，
+<pre tabindex="0"><code>典型的是 Service Mesh。不同集群的网络可以通过 Service Mesh（或者 Mesh Federation）打通，
 就可以实现网络流量的灵活调度和故障转移。
 实际上，也有很多应用通过隧道或者专线打通多个集群，进一步保证了多集群之间网络通信的可靠性。
 </code></pre><p>
         <img class="mx-auto" alt="figure3.png" src="https://i.loli.net/2020/04/29/LhGTIdPfs3rbOAZ.png" />   
     </p>
 <h2 id="第三种方案是侧重解决跨集群资源的服务发现和编排问题">第三种方案是侧重解决跨集群资源的服务发现和编排问题</h2>
-<pre><code>典型的是 Kubernetes Cluster Federation V2。
+<pre tabindex="0"><code>典型的是 Kubernetes Cluster Federation V2。
 KubeFed 在 Kubernetes 原有的资源对象之上重新封装了可以跨集群的 CRD，
 控制器负责把它们分发到不同的集群中，再通过 ExternalDNS 等服务发现机制打通不同集群的应用。
 </code></pre><p>
         <img class="mx-auto" alt="figure2.png" src="https://i.loli.net/2020/04/29/m4K8I5SjFoTlfz9.png" />   
     </p>
-<pre><code>前两种方案都已经有了很多实践案例，这些实践也证明了它们是行之有效的方案。
+<pre tabindex="0"><code>前两种方案都已经有了很多实践案例，这些实践也证明了它们是行之有效的方案。
 而第三种方案还在早期探索阶段，个人觉得不太实用，离实际应用的场景还是离的比较远，多云之间的服务治理只靠 KubeFed 这些 CRD 还远远不够。
-</code></pre><pre><code>现在各大云平台都已经提供了托管Kubernetes服务，除去集群的创建过程，从应用程序的角度来看，绝大部分情况下没有任何区别。
+</code></pre><pre tabindex="0"><code>现在各大云平台都已经提供了托管Kubernetes服务，除去集群的创建过程，从应用程序的角度来看，绝大部分情况下没有任何区别。
 既然用户并不想把所有的服务都锁定在同一家云服务商中，跨云迁移就是很多用户的痛点。
 并且大型企业都会有跟已有应用打通的问题，所以主流的云服务商也都提供了跨云和混合云的方案，比如
 </code></pre><ul>
@@ -291,7 +291,7 @@ KubeFed 在 Kubernetes 原有的资源对象之上重新封装了可以跨集群
 <li>阿里云 ACK</li>
 </ul>
 <h2 id="多云的未来">多云的未来</h2>
-<pre><code>虽然多云可以解决云服务商锁定的问题，但从前面的这些方案可以看出来，
+<pre tabindex="0"><code>虽然多云可以解决云服务商锁定的问题，但从前面的这些方案可以看出来，
 这些方案实际上只解决了某些特定的问题，而并没有很完善的方案来解决多云的所有问题。
 </code></pre><h2 id="多云引入新的问题">多云引入新的问题</h2>
 <ul>
@@ -328,9 +328,9 @@ KubeFed 在 Kubernetes 原有的资源对象之上重新封装了可以跨集群
         
         <li><a href="/2019/12/18/golang-gin-query-parameters-array-map.html">Golang Gin 实战（五）| 接收数组和 Map</a></li>
         
-        <li><a href="/post/2019-12-13-golang-gin-parameters-in-path/">Golang Gin 实战（三）| 路由参数</a></li>
-        
         <li><a href="/post/2019-12-15-golang-gin-query-parameters-source-code-analysis/">Golang Gin 实战（三）| 路由参数</a></li>
+        
+        <li><a href="/post/2019-12-13-golang-gin-parameters-in-path/">Golang Gin 实战（三）| 路由参数</a></li>
         
         <li><a href="/about/">关于我</a></li>
         

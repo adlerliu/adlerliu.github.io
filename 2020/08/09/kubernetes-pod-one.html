@@ -218,15 +218,15 @@
         <div class="post-content">
             <h2 id="kubernetes之pod">kubernetes之Pod</h2>
 <h2 id="k8s为什么需要pod">k8s为什么需要Pod</h2>
-<pre><code>pod，kubernetes项目的最小的API对象，Pod是kubernetes项目的原子单位
+<pre tabindex="0"><code>pod，kubernetes项目的最小的API对象，Pod是kubernetes项目的原子单位
 在docker容器中三句箴言
 Namespaces做隔离，Cgroups做限制，rootfs做文件系统
 在kubernetes项目中，把Linux系统的进程组的概念映射到容器技术中，并使其成为一等公民
 </code></pre><h2 id="容器的单进程概念">容器的单进程概念</h2>
-<pre><code>容器的“单进程模型”，并不是指容器里只能运行“一个”进程，而是指容器没有管理多个进程的能力。
+<pre tabindex="0"><code>容器的“单进程模型”，并不是指容器里只能运行“一个”进程，而是指容器没有管理多个进程的能力。
 这是因为容器里 PID=1 的进程就是应用本身，其他的进程都是这个PID=1 进程的子进程。
 </code></pre><h2 id="pod为什么被创建">Pod为什么被创建</h2>
-<pre><code>关于 Pod 最重要的一个事实是：它只是一个逻辑概念
+<pre tabindex="0"><code>关于 Pod 最重要的一个事实是：它只是一个逻辑概念
 Kubernetes真正处理的，还是宿主机操作系统上 Linux 容器的 Namespace 和Cgroups，而并不存在一个所谓的 Pod 的边界或者隔离环境
 Pod，其实是一组共享了某些资源的容器
 这种方案就是docker中共享网络和Volume的实现
@@ -241,9 +241,9 @@ Network Namespace 的方式，与 Infra 容器关联在一起。
 </code></pre><p>
         <img class="mx-auto" alt="" src="https://i.loli.net/2019/07/18/5d300f74be26361671.png" />   
     </p>
-<pre><code>如上图所示，这个 Pod 里有两个用户容器 A 和 B，还有一个 Infra 容器。很容易理解，在 Kubernetes 项目里，Infra 容器一定要占用极少的资源，所以它使用的是一个非常特殊的镜像，叫作：k8s.gcr.io/pause。
+<pre tabindex="0"><code>如上图所示，这个 Pod 里有两个用户容器 A 和 B，还有一个 Infra 容器。很容易理解，在 Kubernetes 项目里，Infra 容器一定要占用极少的资源，所以它使用的是一个非常特殊的镜像，叫作：k8s.gcr.io/pause。
 </code></pre><h2 id="infra-容器作用">Infra 容器作用</h2>
-<pre><code>而在 Infra 容器“Hold 住”Network Namespace 后，用户容器就可以加入到 Infra 容器的 Network Namespace 当中了。所以，如果你查看这些容器在宿主机上的 Namespace 文件（这个 Namespace+文件的路径，我已经在前面的内容中介绍过），它们指向的值一定是完全一样的。 
+<pre tabindex="0"><code>而在 Infra 容器“Hold 住”Network Namespace 后，用户容器就可以加入到 Infra 容器的 Network Namespace 当中了。所以，如果你查看这些容器在宿主机上的 Namespace 文件（这个 Namespace+文件的路径，我已经在前面的内容中介绍过），它们指向的值一定是完全一样的。 
 这也就意味着，对于 Pod 里的容器 A 和容器 B 来说：
 </code></pre><ul>
 <li>它们可以直接使用 localhost 进行通信；</li>
@@ -253,10 +253,10 @@ Network Namespace 的方式，与 Infra 容器关联在一起。
 <li>Pod 的生命周期只跟 Infra 容器一致，而与容器 A 和 B 无关。</li>
 </ul>
 <h2 id="pod关注的">Pod关注的</h2>
-<pre><code>而对于同一个 Pod 里面的所有用户容器来说，它们的进出流量，也可以认为都是通过 Infra 容器完成的。这一点很重要，因为将来如果你要为 Kubernetes 开发一个网络插件时，应该重点考虑的是如何配置这个 Pod 的 Network Namespace，而不是每一个用户容器如何使用你的网络配置，这是没有意义的。
+<pre tabindex="0"><code>而对于同一个 Pod 里面的所有用户容器来说，它们的进出流量，也可以认为都是通过 Infra 容器完成的。这一点很重要，因为将来如果你要为 Kubernetes 开发一个网络插件时，应该重点考虑的是如何配置这个 Pod 的 Network Namespace，而不是每一个用户容器如何使用你的网络配置，这是没有意义的。
 这就意味着，如果你的网络插件需要在容器里安装某些包或者配置才能完成的话，是不可取的：Infra 容器镜像的 rootfs 里几乎什么都没有，没有你随意发挥的空间。当然，这同时也意味着你的网络插件完全不必关心用户容器的启动与否，而只需要关注如何配置 Pod，也就是 Infra 容器的 Network Namespace 即可。 有了这个设计之后，共享 Volume 就简单多了：Kubernetes 项目只要把所有 Volume 的定义都设计在 Pod 层级即可。
 </code></pre><h2 id="volume案例">volume案例</h2>
-<pre><code>cat nginx-volume.yaml
+<pre tabindex="0"><code>cat nginx-volume.yaml
 ----------------------
 apiVersion: v1
 kind: Pod
@@ -282,12 +282,12 @@ spec:
     command: [&quot;/bin/sh&quot;]
     args: [&quot;-c&quot;, &quot;echo Hello from the debian container &gt; /pod-data/index.html&quot;]
 </code></pre><h6 id="上述例子解释">上述例子解释</h6>
-<pre><code>在这个例子中，debian-container 和 nginx-container 都声明挂载了 shared-data 这个 Volume。而 shared-data 是 hostPath 类型。所以，它对应在宿主机上的目录就是：/data。而这个目录，其实就被同时绑定挂载进了上述两个容器当中。
+<pre tabindex="0"><code>在这个例子中，debian-container 和 nginx-container 都声明挂载了 shared-data 这个 Volume。而 shared-data 是 hostPath 类型。所以，它对应在宿主机上的目录就是：/data。而这个目录，其实就被同时绑定挂载进了上述两个容器当中。
 这就是为什么，nginx-container 可以从它的/usr/share/nginx/html 目录中，读取到 debian-container 生成的 index.html 文件的原因。
 </code></pre><h2 id="pod的设计理念考虑">Pod的设计理念考虑</h2>
-<pre><code>明白了 Pod 的实现原理后，我们再来讨论“容器设计模式”，就容易多了。 Pod 这种“超亲密关系”容器的设计思想，实际上就是希望，当用户想在一个容器里跑多个功能并不相关的应用时，应该优先考虑它们是不是更应该被描述成一个 Pod 里的多个容器。为了能够掌握这种思考方式，你就应该尽量尝试使用它来描述一些用单个容器难以解决的问题。
+<pre tabindex="0"><code>明白了 Pod 的实现原理后，我们再来讨论“容器设计模式”，就容易多了。 Pod 这种“超亲密关系”容器的设计思想，实际上就是希望，当用户想在一个容器里跑多个功能并不相关的应用时，应该优先考虑它们是不是更应该被描述成一个 Pod 里的多个容器。为了能够掌握这种思考方式，你就应该尽量尝试使用它来描述一些用单个容器难以解决的问题。
 </code></pre><h2 id="超亲密关系应用实例">超亲密关系应用实例</h2>
-<pre><code>cat tomcat-war.yaml
+<pre tabindex="0"><code>cat tomcat-war.yaml
 --------------------------
 apiVersion: v1
 kind: Pod
@@ -315,7 +315,7 @@ spec:
   - name: app-volume
     emptyDir: {}
 </code></pre><h2 id="说明">说明</h2>
-<pre><code>在这个 Pod 中，我们定义了两个容器，第一个容器使用的镜像是 geektim/sample:v2，这个镜像里只有一个 WAR 包（sample.war）放在根目录下。而第二个容器则使用的是一个标准的 Tomcat 镜像。
+<pre tabindex="0"><code>在这个 Pod 中，我们定义了两个容器，第一个容器使用的镜像是 geektim/sample:v2，这个镜像里只有一个 WAR 包（sample.war）放在根目录下。而第二个容器则使用的是一个标准的 Tomcat 镜像。
 不过，你可能已经注意到，WAR 包容器的类型不再是一个普通容器，而是一个 Init Container 类型的容器。 在 Pod 中，所有 Init Container 定义的容器，都会比 spec.containers 定义的用户容器先启动。并且，Init Container 容器会按顺序逐一启动，而直到它们都启动并且退出了，用户容器才会启动。
 所以，这个 Init Container 类型的 WAR 包容器启动后，我执行了一句&quot;cp /sample.war /app&quot;，把应用的 WAR 包拷贝到 /app 目录下，然后退出。
 而后这个 /app 目录，就挂载了一个名叫 app-volume 的 Volume。
@@ -326,7 +326,7 @@ spec:
 顾名思义，sidecar 指的就是我们可以在一个 Pod 中，启动一个辅助容器，来完成一些独立于主进程（主容器）之外的工作。
 比如，在我们的这个应用 Pod 中，Tomcat 容器是我们要使用的主容器，而 WAR 包容器的存在，只是为了给它提供一个 WAR 包而已。所以，我们用 Init Container 的方式优先运行 WAR 包容器，扮演了一个 sidecar 的角色
 </code></pre><h2 id="pod总结">Pod总结</h2>
-<pre><code>Pod，实际上是在扮演传统基础设施里“虚拟机”的角色；而容器，则是这个虚拟机里运行的用
+<pre tabindex="0"><code>Pod，实际上是在扮演传统基础设施里“虚拟机”的角色；而容器，则是这个虚拟机里运行的用
 户程序。
 当你需要把一个运行在虚拟机里的应用迁移到 Docker 容器中时，一定要仔细分析到
 底有哪些进程（组件）运行在这个虚拟机里
